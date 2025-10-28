@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <defs>
+    <linearGradient id="bg2" x1="0" x2="1"><stop offset="0" stop-color="#fffaf7"/><stop offset="1" stop-color="#f0fbff"/></linearGradient>
+    <style>
+      .title{font:700 22px "Segoe UI", Roboto, Arial; fill:#073042}
+      .box{fill:#ffffff;stroke:#d5eef6;stroke-width:2;rx:12}
+      .lbl{font:600 14px "Segoe UI", Roboto, Arial; fill:#042a3a}
+      .small{font:500 12px "Segoe UI", Roboto, Arial; fill:#254b56}
+      .muted{font:400 11px "Segoe UI", Roboto, Arial; fill:#657f86}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg2)"/>
+  <g transform="translate(28,20)">
+    <text x="0" y="28" class="title">Activity 2 — Hybrid Solar & Wind System (Clinic)</text>
+
+    <!-- Solar block -->
+    <g transform="translate(0,70)">
+      <rect x="0" y="0" width="260" height="110" class="box"/>
+      <text x="130" y="26" text-anchor="middle" class="lbl">Solar PV Array</text>
+      <rect x="18" y="44" width="224" height="50" rx="6" fill="#63b3ed" opacity="0.95"/>
+    </g>
+
+    <!-- Wind block with stylized turbine icon -->
+    <g transform="translate(0,200)">
+      <rect x="0" y="0" width="260" height="110" class="box"/>
+      <text x="130" y="26" text-anchor="middle" class="lbl">Wind Turbine (3–5 kW)</text>
+      <g transform="translate(110,55)">
+        <circle cx="0" cy="0" r="10" fill="#ffe08a"/>
+        <path d="M0,0 L-40,-20 A2,2 0 0 1 0,0 Z" fill="#e6eef8" transform="rotate(0)"/>
+        <path d="M0,0 L40,-20 A2,2 0 0 1 0,0 Z" fill="#e6eef8" transform="rotate(120)"/>
+        <path d="M0,0 L0,40 A2,2 0 0 1 0,0 Z" fill="#e6eef8" transform="rotate(240)"/>
+      </g>
+    </g>
+
+    <!-- Controller central -->
+    <g transform="translate(320,120)">
+      <rect x="0" y="0" width="260" height="140" class="box"/>
+      <text x="130" y="36" text-anchor="middle" class="lbl">Hybrid Controller / Energy Management</text>
+      <text x="130" y="64" text-anchor="middle" class="small">MPPT + priority logic for loads & batteries</text>
+    </g>
+
+    <!-- Battery & inverter -->
+    <g transform="translate(660,120)">
+      <rect x="0" y="0" width="260" height="140" class="box"/>
+      <text x="130" y="36" text-anchor="middle" class="lbl">Battery Bank + BMS</text>
+      <text x="130" y="64" text-anchor="middle" class="small">Supports vaccine fridge, lights, equipment</text>
+    </g>
+
+    <g transform="translate(980,120)">
+      <rect x="0" y="0" width="200" height="140" class="box"/>
+      <text x="100" y="36" text-anchor="middle" class="lbl">Inverter & AC Panel</text>
+      <text x="100" y="64" text-anchor="middle" class="small">Critical loads supply & auto-transfer</text>
+    </g>
+
+    <!-- Lines -->
+    <g stroke="#0a4a57" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M260,120 L320,160" />
+      <path d="M260,260 L320,180" />
+      <path d="M580,190 L660,190" />
+      <path d="M920,190 L980,190" />
+    </g>
+
+    <text x="0" y="470" class="muted">Optional: small diesel genset for long autonomy; monitoring via GSM/IoT for remote alerts.</text>
+  </g>
+</svg>

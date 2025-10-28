@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop offset="0" stop-color="#f0f7ff"/>
+      <stop offset="1" stop-color="#e9fbf5"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#0ea5a4"/>
+      <stop offset="1" stop-color="#0369a1"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 22px/1.2 "Segoe UI", Roboto, Arial; fill:#03314b }
+      .lbl { font: 600 14px "Segoe UI", Roboto, Arial; fill:#042a3a }
+      .box { fill:#ffffff; stroke:#cfe8f6; stroke-width:2; rx:12 }
+      .icon-sun{fill:#ffd166}
+      .small{font:500 12px "Segoe UI", Roboto, Arial; fill:#0f1724}
+      .muted{font:400 11px "Segoe UI", Roboto, Arial; fill:#426672}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <g transform="translate(32,20)">
+    <text x="0" y="28" class="title">Activity 1 — Rooftop Solar PV System (5 kW)</text>
+    <!-- Sun + panels -->
+    <g transform="translate(0,60)">
+      <rect x="0" y="0" width="270" height="140" class="box" />
+      <text x="135" y="28" text-anchor="middle" class="lbl">Solar PV Array</text>
+      <!-- stylized panels -->
+      <g transform="translate(18,50)">
+        <rect width="230" height="70" rx="6" fill="url(#g1)" opacity="0.95"/>
+        <g fill="rgba(255,255,255,0.18)">
+          <!-- grid lines -->
+          <line x1="10" y1="6" x2="10" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="38" y1="6" x2="38" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="66" y1="6" x2="66" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="94" y1="6" x2="94" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="122" y1="6" x2="122" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="150" y1="6" x2="150" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="178" y1="6" x2="178" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+<line x1="206" y1="6" x2="206" y2="64" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Combiner -> Inverter -> Panel -->
+    <g transform="translate(310,90)">
+      <rect x="0" y="0" width="220" height="72" class="box"/>
+      <text x="110" y="36" text-anchor="middle" class="lbl">DC Combiner / MPPT</text>
+    </g>
+
+    <g transform="translate(560,90)">
+      <rect x="0" y="0" width="240" height="72" class="box"/>
+      <text x="120" y="36" text-anchor="middle" class="lbl">Inverter (3.5–5 kW)</text>
+      <text x="120" y="54" text-anchor="middle" class="small">DC → AC, anti-islanding, meter</text>
+    </g>
+
+    <g transform="translate(860,90)">
+      <rect x="0" y="0" width="260" height="72" class="box"/>
+      <text x="130" y="36" text-anchor="middle" class="lbl">AC Distribution / Grid Interface</text>
+    </g>
+
+    <!-- Battery below -->
+    <g transform="translate(520,210)">
+      <rect x="0" y="0" width="260" height="92" class="box"/>
+      <text x="130" y="30" text-anchor="middle" class="lbl">Battery Bank (Li‑ion) + BMS</text>
+      <text x="130" y="54" text-anchor="middle" class="small">Backup during outage • Capacity sized for loads</text>
+    </g>
+
+    <!-- Connection lines -->
+    <g stroke="#0b4a5a" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M270,160 L310,128" />
+      <path d="M530,128 L560,128" />
+      <path d="M800,128 L860,128" />
+      <path d="M680,162 L680,210" />
+      <path d="M680,302 L680,264" />
+      <path d="M690,264 L860,138" stroke-dasharray="6 6" stroke-opacity="0.6"/>
+    </g>
+
+    <!-- footer notes -->
+    <text x="0" y="420" class="muted">Notes: Include AC/DC isolation switches, surge protection, net-metering export meter, and earthing. System sized ~5 kW. </text>
+  </g>
+</svg>

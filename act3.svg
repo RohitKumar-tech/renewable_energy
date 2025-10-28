@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+  <defs>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#dff6ff"/><stop offset="1" stop-color="#eafffb"/></linearGradient>
+    <style>
+      .title{font:700 22px "Segoe UI", Roboto, Arial; fill:#012a3a}
+      .box{fill:#fff;stroke:#cfeef6;stroke-width:2;rx:12}
+      .lbl{font:600 14px "Segoe UI", Roboto, Arial; fill:#043a49}
+      .small{font:500 12px "Segoe UI", Roboto, Arial; fill:#254b56}
+      .muted{font:400 11px "Segoe UI", Roboto, Arial; fill:#526f76}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#sea)"/>
+  <g transform="translate(28,20)">
+    <text x="0" y="28" class="title">Activity 3 — Ocean Thermal Energy Conversion (OTEC)</text>
+
+    <g transform="translate(0,70)">
+      <rect x="0" y="0" width="320" height="100" class="box"/>
+      <text x="160" y="30" text-anchor="middle" class="lbl">Warm Surface Seawater (~25–30°C)</text>
+      <text x="160" y="54" text-anchor="middle" class="small">Supply to Evaporator</text>
+    </g>
+
+    <g transform="translate(360,70)">
+      <rect x="0" y="0" width="320" height="100" class="box"/>
+      <text x="160" y="30" text-anchor="middle" class="lbl">Evaporator / Working Fluid (ORC)</text>
+      <text x="160" y="54" text-anchor="middle" class="small">Vaporizes low‑boiling fluid</text>
+    </g>
+
+    <g transform="translate(720,70)">
+      <rect x="0" y="0" width="320" height="100" class="box"/>
+      <text x="160" y="30" text-anchor="middle" class="lbl">Turbine & Generator</text>
+      <text x="160" y="54" text-anchor="middle" class="small">Generates electricity</text>
+    </g>
+
+    <g transform="translate(360,210)">
+      <rect x="0" y="0" width="320" height="100" class="box"/>
+      <text x="160" y="30" text-anchor="middle" class="lbl">Condenser (Cold Deep Water ~4–5°C)</text>
+      <text x="160" y="54" text-anchor="middle" class="small">Condenses vapor; completes cycle</text>
+    </g>
+
+    <!-- Flow arrows -->
+    <g stroke="#0b4a5a" stroke-width="3" fill="none" stroke-linecap="round">
+      <path d="M320,120 L360,120" marker-end="url(#arr)"/>
+      <path d="M680,120 L720,120" />
+      <path d="M520,170 L520,210" />
+      <path d="M520,310 L520,270" />
+    </g>
+
+    <defs>
+      <marker id="arr" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 z" fill="#0b4a5a"/>
+      </marker>
+    </defs>
+
+    <text x="0" y="420" class="muted">Byproducts: Freshwater via condensation/desalination (optional), seawater air-conditioning and aquaculture integration.</text>
+  </g>
+</svg>
