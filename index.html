@@ -78,6 +78,7 @@
       margin-left: 300px;
       padding: 40px 60px;
       transition: background 0.5s;
+      max-width: 1200px;
     }
 
     header {
@@ -113,7 +114,7 @@
     .card {
       background: var(--card-bg);
       border-radius: 14px;
-      padding: 28px;
+      padding: 20px;
       margin-top: 28px;
       box-shadow: 0 6px 18px var(--shadow-color);
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.4s;
@@ -130,21 +131,52 @@
       margin-bottom: 14px;
     }
 
-    .diagram img {
+    /* ---------- media layout: image + block diagram ---------- */
+    .media-row {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .media-row .photo {
       width: 100%;
-      max-width: 780px;
+      height: auto;
       border-radius: 12px;
       border: 1px solid #e6eef8;
-      margin-bottom: 10px;
+      display: block;
+      box-shadow: 0 6px 18px rgba(13,38,63,0.04);
     }
+
+    .diagram-box {
+      background: #f7fdff;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #e0f0fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diagram-box svg { width: 100%; height: auto; }
 
     .explain ul {
       padding-left: 20px;
-      margin: 10px 0;
+      margin: 14px 0;
       line-height: 1.7;
     }
 
     .explain li { margin: 10px 0; }
+
+    .criterion {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #4b5563;
+      padding: 10px;
+      border-left: 3px solid #cfe7ff;
+      background: #fbfeff;
+      border-radius: 6px;
+    }
 
     footer {
       margin-top: 40px;
@@ -153,17 +185,15 @@
       text-align: center;
     }
 
-    @media(max-width:860px) {
-      .sidebar {
-        position: relative;
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-      }
+    @media(max-width:980px) {
       .container {
-        margin-left: 0;
+        margin-left: 18px;
         padding: 24px;
       }
+      .media-row {
+        grid-template-columns: 1fr;
+      }
+      .diagram-box { order: 2; }
     }
   </style>
 </head>
@@ -191,61 +221,197 @@
     </header>
 
     <!-- Activity 1 -->
-    <section id="act1" class="card">
-      <div class="activity-title">☀️ Activity 1: Rooftop Solar PV System (5 kW)</div>
-      <div class="diagram"><img src="Activity_1.jpg" alt="Rooftop Solar PV System Diagram"></div>
+    <section id="act1" class="card" aria-labelledby="act1-title">
+      <div id="act1-title" class="activity-title">☀️ Activity 1: Rooftop Solar PV System (5 kW)</div>
+
+      <div class="media-row">
+        <!-- left: existing local image -->
+        <div>
+          <img class="photo" src="Activity_1.jpg" alt="Rooftop Solar PV System Diagram (photo)">
+          <div style="font-size:12px;color:#465f68;margin-top:8px">Image: Activity_1.jpg (local)</div>
+        </div>
+
+        <!-- right: inline block diagram -->
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 620 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <style>.lab{font:600 12px system-ui,Arial;fill:#052a34}.box{fill:#fff;stroke:#cfe8f6;stroke-width:1.6;rx:8}</style>
+
+            <rect x="10" y="14" width="160" height="60" rx="8" class="box"/>
+            <text x="90" y="44" text-anchor="middle" class="lab">Solar PV Array</text>
+
+            <rect x="190" y="14" width="150" height="60" rx="8" class="box"/>
+            <text x="265" y="44" text-anchor="middle" class="lab">DC Combiner / MPPT</text>
+
+            <rect x="360" y="14" width="140" height="60" rx="8" class="box"/>
+            <text x="430" y="44" text-anchor="middle" class="lab">Inverter</text>
+
+            <rect x="10" y="110" width="210" height="64" rx="8" class="box"/>
+            <text x="115" y="145" text-anchor="middle" class="lab">Battery Bank + BMS</text>
+
+            <rect x="260" y="110" width="240" height="64" rx="8" class="box"/>
+            <text x="380" y="145" text-anchor="middle" class="lab">AC Distribution Panel & Grid Interface</text>
+
+            <g stroke="#0b4a5a" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M170 44 L190 44" />
+              <path d="M340 44 L360 44" />
+              <path d="M430 74 L430 110" />
+              <path d="M210 142 L260 142" />
+            </g>
+
+            <text x="310" y="206" font-size="11" fill="#3b5f66" text-anchor="middle">Block diagram: PV → MPPT → Inverter → Loads/Grid + Battery</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="criterion">Completeness of block diagrams (clear, logical flow).</div>
+
       <div class="explain">
         <ul>
-          <li><strong>🔆 Source of energy:</strong> Solar irradiance captured by rooftop photovoltaic modules rated at 5 kW. Panels convert sunlight directly into DC electricity using the photovoltaic effect.</li>
-          <li><strong>⚙️ Conversion process:</strong> DC from panels passes through DC combiners and MPPT charge controllers to maximize efficiency. The inverter converts DC to grid-synchronized AC. Li-ion batteries store energy for night use or outages.</li>
-          <li><strong>🏡 Output / utilization:</strong> Supplies lighting, appliances, and critical loads. Excess power exported through net metering.</li>
-          <li><strong>🌿 Real-world relevance:</strong> Reduces bills, enhances energy independence, and promotes distributed clean generation.</li>
-          <li><strong>🛠️ Design notes:</strong> Proper string sizing, grounding, and protective isolation are essential for safety and longevity.</li>
+          <li><strong>Source of energy:</strong> Solar irradiance incident on rooftop PV modules (monocrystalline preferred for higher efficiency). System sized to ~5 kW peak (STC) to meet daytime load and enable grid export.</li>
+          <li><strong>Conversion process:</strong> PV modules generate DC → MPPT controller optimizes voltage/current → inverter converts to synchronized AC for loads or grid. Batteries (Li-ion) store surplus power; charge controller and BMS manage storage and protection.</li>
+          <li><strong>Output / utilization:</strong> Powers lighting, fans, refrigerators, and small appliances. Critical loads run during outages via stored energy. Surplus is exported under net-metering.</li>
+          <li><strong>Real-world relevance:</strong> Reduces bills, improves energy security, and supports sustainable housing. Ideal for residential or institutional rooftops.</li>
+          <li><strong>Design notes:</strong> Proper string sizing (Voc/Isc), shading analysis, earthing, lightning protection, and inverter compatibility must be verified for reliability and efficiency.</li>
         </ul>
       </div>
     </section>
 
     <!-- Activity 2 -->
-    <section id="act2" class="card">
-      <div class="activity-title">🌤️ Activity 2: Hybrid Solar–Wind System for Rural Health Clinic</div>
-      <div class="diagram"><img src="Activity_2.webp" alt="Hybrid Solar Wind System Diagram"></div>
+    <section id="act2" class="card" aria-labelledby="act2-title">
+      <div id="act2-title" class="activity-title">🌤️ Activity 2: Hybrid Solar–Wind System for Rural Health Clinic</div>
+
+      <div class="media-row">
+        <div>
+          <img class="photo" src="Activity_2.jpg" alt="Hybrid Solar–Wind System Diagram (photo)">
+          <div style="font-size:12px;color:#465f68;margin-top:8px">Image: Activity_2.webp (local)</div>
+        </div>
+
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 420 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <style>.lab{font:600 12px system-ui,Arial;fill:#052a34}.box{fill:#fff;stroke:#cfe8f6;stroke-width:1.6;rx:8}</style>
+
+            <rect x="8" y="12" width="120" height="56" rx="8" class="box"/><text x="68" y="46" text-anchor="middle" class="lab">Solar PV</text>
+            <rect x="8" y="88" width="120" height="56" rx="8" class="box"/><text x="68" y="122" text-anchor="middle" class="lab">Wind Turbine</text>
+
+            <rect x="160" y="40" width="120" height="72" rx="8" class="box"/><text x="220" y="76" text-anchor="middle" class="lab">Hybrid Controller (MPPT)</text>
+
+            <rect x="300" y="40" width="110" height="72" rx="8" class="box"/><text x="355" y="76" text-anchor="middle" class="lab">Battery + BMS</text>
+
+            <rect x="160" y="140" width="250" height="56" rx="8" class="box"/><text x="285" y="174" text-anchor="middle" class="lab">Inverter + AC Panel (Clinic Loads)</text>
+
+            <g stroke="#0b4a5a" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M128 40 L160 76" />
+              <path d="M128 120 L160 100" />
+              <path d="M280 76 L300 76" />
+              <path d="M220 112 L220 140" />
+            </g>
+
+            <text x="210" y="206" font-size="11" fill="#3b5f66" text-anchor="middle">Block diagram: solar + wind → controller → battery → inverter → clinic</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="criterion">Completeness of block diagrams (clear, logical flow).</div>
+
       <div class="explain">
         <ul>
-          <li><strong>💨 Source of energy:</strong> A combination of solar and wind ensures reliable 24/7 renewable power generation for critical healthcare facilities.</li>
-          <li><strong>⚙️ Conversion process:</strong> Solar PV produces DC, while wind turbines generate variable AC that is rectified and managed via a hybrid controller. The inverter and battery system stabilize output for essential medical loads.</li>
-          <li><strong>🏥 Output / utilization:</strong> Provides uninterrupted power for vaccine refrigeration, lighting, and diagnostic equipment.</li>
-          <li><strong>🌍 Real-world relevance:</strong> Enhances rural healthcare reliability while reducing fossil-fuel dependency.</li>
-          <li><strong>📐 Design notes:</strong> Includes battery autonomy analysis, surge protection, and remote monitoring for performance tracking.</li>
+          <li><strong>Source of energy:</strong> Hybrid inputs from solar PV and small wind turbine (3–5 kW). Combination ensures reliable power day and night.</li>
+          <li><strong>Conversion process:</strong> PV produces DC; wind turbine generates variable AC, rectified by a hybrid controller managing power flow and battery charging. Inverter provides pure sine AC output and synchronizes with backup sources. Monitoring and remote control improve reliability.</li>
+          <li><strong>Output / utilization:</strong> Continuous power for vaccine refrigeration, lighting, diagnostic devices, and communication systems. Battery autonomy ensures 24–72 hours operation during low-generation periods.</li>
+          <li><strong>Real-world relevance:</strong> Enables dependable healthcare services in off-grid or weak-grid villages while reducing fuel costs and pollution.</li>
+          <li><strong>Design notes:</strong> Optimize wind turbine siting, include surge arrestors, perform energy audits, and ensure battery sizing meets load autonomy requirements.</li>
         </ul>
       </div>
     </section>
 
     <!-- Activity 3 -->
-    <section id="act3" class="card">
-      <div class="activity-title">🌊 Activity 3: Ocean Thermal Energy Conversion (OTEC) System</div>
-      <div class="diagram"><img src="Activity_3.jpg" alt="OTEC System Diagram"></div>
+    <section id="act3" class="card" aria-labelledby="act3-title">
+      <div id="act3-title" class="activity-title">🌊 Activity 3: Ocean Thermal Energy Conversion (OTEC) System</div>
+
+      <div class="media-row">
+        <div>
+          <img class="photo" src="Activity_3.jpg" alt="OTEC System Diagram (photo)">
+          <div style="font-size:12px;color:#465f68;margin-top:8px">Image: Activity_3.jpg (local)</div>
+        </div>
+
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 480 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <style>.lab{font:600 12px system-ui,Arial;fill:#052a34}.box{fill:#fff;stroke:#cfe8f6;stroke-width:1.6;rx:8}</style>
+
+            <rect x="12" y="14" width="180" height="56" rx="8" class="box"/><text x="102" y="46" text-anchor="middle" class="lab">Warm Surface Water (25–30°C)</text>
+
+            <rect x="210" y="14" width="140" height="56" rx="8" class="box"/><text x="280" y="46" text-anchor="middle" class="lab">Evaporator (ORC working fluid)</text>
+
+            <rect x="370" y="14" width="100" height="56" rx="8" class="box"/><text x="420" y="46" text-anchor="middle" class="lab">Turbine + Generator</text>
+
+            <rect x="210" y="110" width="260" height="56" rx="8" class="box"/><text x="340" y="142" text-anchor="middle" class="lab">Condenser (Cold Deep Water 4–5°C)</text>
+
+            <g stroke="#0b4a5a" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M192 42 L210 42" />
+              <path d="M350 42 L370 42" />
+              <path d="M300 70 L300 110" />
+            </g>
+
+            <text x="240" y="204" font-size="11" fill="#3b5f66">Block diagram: heat transfer → working fluid → turbine → condenser</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="criterion">Completeness of block diagrams (clear, logical flow).</div>
+
       <div class="explain">
         <ul>
-          <li><strong>🌡️ Source of energy:</strong> Utilizes temperature difference between warm surface water and cold deep seawater in tropical regions.</li>
-          <li><strong>⚙️ Conversion process:</strong> Warm seawater heats a working fluid in an evaporator. The vapor drives a turbine generator, and cold seawater condenses the vapor back, completing the cycle.</li>
-          <li><strong>🔋 Output / utilization:</strong> Generates clean baseload electricity; byproducts include desalinated water and cooling for aquaculture.</li>
-          <li><strong>🌍 Real-world relevance:</strong> Provides sustainable coastal energy, fresh water, and cooling applications in tropical regions.</li>
-          <li><strong>🧠 Design notes:</strong> Focus on efficient heat exchangers, corrosion control, and eco-friendly seawater intake design.</li>
+          <li><strong>Source of energy:</strong> Thermal gradient between warm surface water (~25–30°C) and cold deep water (~4–5°C) in tropical oceans.</li>
+          <li><strong>Conversion process:</strong> Warm seawater heats a working fluid (e.g., ammonia) in an evaporator → vapor drives turbine-generator → cold deep seawater condenses vapor, repeating cycle. Closed-cycle OTEC produces electricity continuously.</li>
+          <li><strong>Output / utilization:</strong> Provides baseload renewable power for islands; co-produces desalinated freshwater, cold water for air-conditioning, and nutrient-rich water for aquaculture.</li>
+          <li><strong>Real-world relevance:</strong> Offers sustainable, emission-free energy and water solutions for coastal nations, supporting climate resilience.</li>
+          <li><strong>Design notes:</strong> Key challenges include corrosion, marine biofouling, deep-water pipe design, and high capital costs; hybrid OTEC-desalination systems improve economic viability.</li>
         </ul>
       </div>
     </section>
 
     <!-- Activity 4 -->
-    <section id="act4" class="card">
-      <div class="activity-title">♻️ Activity 4: Biogas Power Generation System</div>
-      <div class="diagram"><img src="Activity_4.jpeg" alt="Biogas System Diagram"></div>
+    <section id="act4" class="card" aria-labelledby="act4-title">
+      <div id="act4-title" class="activity-title">♻️ Activity 4: Biogas Power Generation System</div>
+
+      <div class="media-row">
+        <div>
+          <img class="photo" src="Activity_4.jpg" alt="Biogas System Diagram (photo)">
+          <div style="font-size:12px;color:#465f68;margin-top:8px">Image: Activity_4.jpeg (local)</div>
+        </div>
+
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 460 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <style>.lab{font:600 12px system-ui,Arial;fill:#052a34}.box{fill:#fff;stroke:#cfe8f6;stroke-width:1.6;rx:8}</style>
+
+            <rect x="12" y="14" width="160" height="56" rx="8" class="box"/><text x="92" y="46" text-anchor="middle" class="lab">Feedstock Input (Dung, Waste)</text>
+
+            <rect x="200" y="14" width="120" height="56" rx="8" class="box"/><text x="260" y="46" text-anchor="middle" class="lab">Anaerobic Digester</text>
+
+            <rect x="340" y="14" width="100" height="56" rx="8" class="box"/><text x="390" y="46" text-anchor="middle" class="lab">Gas Holder</text>
+
+            <rect x="200" y="110" width="240" height="56" rx="8" class="box"/><text x="320" y="142" text-anchor="middle" class="lab">Biogas Engine + Generator / Digestate Outlet</text>
+
+            <g stroke="#0b4a5a" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M172 42 L200 42" />
+              <path d="M320 42 L340 42" />
+              <path d="M260 70 L260 110" />
+            </g>
+
+            <text x="240" y="204" font-size="11" fill="#3b5f66">Block diagram: feedstock → digester → gas holder → engine → electricity + digestate</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="criterion">Completeness of block diagrams (clear, logical flow).</div>
+
       <div class="explain">
         <ul>
-          <li><strong>💩 Source of energy:</strong> Organic waste such as cow dung, crop residues, and food waste undergo anaerobic digestion producing methane-rich biogas.</li>
-          <li><strong>⚙️ Conversion process:</strong> Methane gas is collected and burned in a biogas engine generator to produce electricity; digestate slurry is used as fertilizer.</li>
-          <li><strong>🔋 Output / utilization:</strong> Powers rural homes, farms, or small industries, providing both energy and soil nutrients.</li>
-          <li><strong>🌿 Real-world relevance:</strong> Converts waste to wealth, reduces greenhouse emissions, and supports sustainable rural economies.</li>
-          <li><strong>📐 Design notes:</strong> Maintain digester temperature (30–35°C), proper feedstock ratio, and ensure leak-proof construction.</li>
+          <li><strong>Source of energy:</strong> Organic manure and agro-residues from 100 cattle produce methane-rich biogas (60–70% CH₄) via anaerobic digestion.</li>
+          <li><strong>Conversion process:</strong> Feedstock enters digester where microbes convert organics into biogas under mesophilic (~35°C) or thermophilic (~55°C) conditions. Gas is cleaned (H₂S/moisture removal) and stored. It fuels an engine-generator or CHP unit for electricity; waste heat maintains digester temperature.</li>
+          <li><strong>Output / utilization:</strong> Produces electricity for on-site farm loads; digestate serves as organic fertilizer; heat used for water or space heating.</li>
+          <li><strong>Real-world relevance:</strong> Converts waste into energy and fertilizer, reduces greenhouse emissions, enhances rural sustainability and farm revenue.</li>
+          <li><strong>Design notes:</strong> Ensure leak-proof digester, proper feedstock ratio (C/N balance), gas cleaning, flame arrestors, and regular maintenance for consistent performance.</li>
         </ul>
       </div>
     </section>
